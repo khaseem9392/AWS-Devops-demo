@@ -27,49 +27,127 @@
 
 ---
 
-## ⚡ Steps to Deploy
+# AWS DevOps Demo Project - Setup Guide
 
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/khaseem9392/aws-devops-demo.git
-   cd aws-devops-demo
-   ```
+## ✅ Step 1 – Prerequisites Installation
 
-2. **Terraform Init**
-   Initialize Terraform in the development environment:
-   ```bash
-   cd iac/environments/dev
-   terraform init
-   ```
+### Install VS Code  
+[https://code.visualstudio.com/](https://code.visualstudio.com/)
 
-3. **Apply Terraform Configuration**
-   Apply the infrastructure configuration:
-   ```bash
-   terraform apply -var-file="terraform.tfvars" -auto-approve
-   ```
+### Install Required VS Code Extensions  
+- Terraform by HashiCorp  
+- Docker  
+- Python  
 
-4. **Build and Deploy the Sample App**
-   Build the Docker image and deploy it (optional: push to ECR/DockerHub):
-   ```bash
-   cd app/sample-app
-   docker build -t sample-app:latest .
-   docker run -p 80:80 sample-app
-   ```
+### Install Tools Locally  
+- Terraform CLI  
+- AWS CLI  
+- Docker Desktop  
 
-5. **Access the Deployed App**
-   Get the public IP from Terraform output:
-   ```bash
-   terraform output ec2_ip
-   ```
-   Open in browser or use curl:
-   ```bash
-   curl http://<EC2_PUBLIC_IP>
-   ```
-   Expected response:
-   ```
-   Hello from Sample App running on EC2!
-   ```
+---
 
+## ✅ Step 2 – Configure AWS CLI Credentials
+
+```bash
+aws configure
+Input:
+
+AWS Access Key ID
+
+AWS Secret Access Key
+
+Default region: us-east-1
+
+Output format: json
+
+✅ Step 3 – Clone the Repository
+bash
+Copy code
+git clone https://github.com/your-username/aws-devops-demo.git
+cd aws-devops-demo
+✅ Step 4 – Terraform Initialization
+bash
+Copy code
+cd iac/environments/dev
+terraform init
+Expected Output:
+
+nginx
+Copy code
+Terraform has been successfully initialized!
+✅ Step 5 – Apply Terraform Configuration
+bash
+Copy code
+terraform apply -var-file="terraform.tfvars" -auto-approve
+Expected Outputs Example:
+
+makefile
+Copy code
+Apply complete! Resources: 5 added, 0 changed, 0 destroyed.
+
+Outputs:
+ec2_ip = "3.122.45.67"
+rds_endpoint = "mydb.abcd1234.us-east-1.rds.amazonaws.com:5432"
+vpc_id = "vpc-0a1b2c3d4e5f67890"
+✅ Step 6 – Build and Run Sample App Locally (Optional)
+Navigate to Sample App
+bash
+Copy code
+cd app/sample-app
+Build Docker Image
+bash
+Copy code
+docker build -t sample-app:latest .
+Run the Container
+bash
+Copy code
+docker run -p 80:80 sample-app
+Test Locally
+Open browser or run:
+
+bash
+Copy code
+curl http://localhost
+Expected Response:
+
+csharp
+Copy code
+Hello from Sample App running on EC2!
+✅ Step 7 – Access App on Deployed EC2
+Retrieve Public IP from Terraform output:
+
+bash
+Copy code
+terraform output ec2_ip
+Access in browser:
+
+cpp
+Copy code
+http://<ec2_ip>
+Expected Response:
+
+csharp
+Copy code
+Hello from Sample App running on EC2!
+✅ Step 8 – Monitoring Logs
+Log in to AWS Console
+
+Navigate to CloudWatch → Logs → Log Groups → /aws/sample-app
+
+View logs from EC2 and RDS
+
+✅ Step 9 – CI/CD Automation
+After pushing to the GitHub repo:
+
+GitHub Actions workflow auto-applies Terraform
+
+Builds and deploys the Docker sample app
+
+Example workflow file:
+
+bash
+Copy code
+pipeline/github-actions.yml
 ---
 
 ## 📊 Monitoring & Logging
