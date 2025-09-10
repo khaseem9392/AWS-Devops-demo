@@ -101,3 +101,7 @@ ec2_ip = "3.122.45.67"
 rds_endpoint = "mydb.abcd1234.us-east-1.rds.amazonaws.com:5432"
 vpc_id = "vpc-0a1b2c3d4e5f67890"
 ```
+"Suggestions and project improvement ideas are welcomed!"
+Thanks a lot,
+Project Leader
+D khaseemvali
