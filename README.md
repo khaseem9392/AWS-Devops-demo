@@ -2,7 +2,9 @@
 # 🚀 AWS DevOps Engineer Demo Project
 
 ## 🏗️ Architecture Diagram  
-![Architecture Diagram](architecture.drawio.png)
+![Architecture Diagram](architecture.jpg)
+![Architecture Diagram](architechure2.png)
+
 
 - **VPC**: Contains public and private subnets, routing tables, and security groups.
 - **EC2 Instance**: Hosts a sample Flask app running in a Docker container.
@@ -29,7 +31,7 @@
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/your-username/aws-devops-demo.git
+   git clone https://github.com/khaseem9392/aws-devops-demo.git
    cd aws-devops-demo
    ```
 
